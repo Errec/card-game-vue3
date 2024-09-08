@@ -31,8 +31,7 @@ function errorCaptured(err: Error) {
 
 function handleReset() {
   error.value = null;
-  // You might want to emit an event here if parent components need to know about the reset
-  // emit('reset');
+  location.reload();
 }
 
 defineExpose({ errorCaptured });

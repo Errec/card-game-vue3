@@ -1,6 +1,6 @@
 <!-- src/components/LoadingSpinner.vue -->
 <template>
-  <div class="flex justify-center items-center" role="status">
+  <div class="fixed-center" role="status">
     <div
       class="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500"
     ></div>
@@ -9,8 +9,23 @@
 </template>
 
 <script setup lang="ts">
-// Improvements:
-// 1. Added role="status" for accessibility, indicating that this component represents a loading state.
-// 2. Removed unnecessary props and optimized the design by keeping it simple.
-// 3. Used Tailwind CSS for consistent styling.
+// No additional logic needed
 </script>
+
+<style scoped>
+.fixed-center {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 50;
+}
+</style>
+
+<!--
+Improvements:
+1. Added a custom CSS class 'fixed-center' to position the spinner in the middle of the screen.
+2. Kept the existing spinner animation and accessibility features.
+3. Removed any changes to background or overlay.
+4. Maintained the 'role="status"' for accessibility.
+-->
