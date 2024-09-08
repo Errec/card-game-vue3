@@ -18,7 +18,13 @@
     ],
     "paths": {
       "@/*": [
-        "src/*"
+        "src/*",
+        "src/schemas/*",
+        "src/services/*",
+        "src/store/*",
+        "src/components/*",
+        "src/composables/*",
+        "src/views/*",
       ]
     },
     "lib": [

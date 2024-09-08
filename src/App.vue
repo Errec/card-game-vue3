@@ -1,27 +1,20 @@
+<!-- src/App.vue -->
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Welcome to Your Vue.js + TypeScript App" />
+  <div id="app">
+    <HomeView />
+  </div>
 </template>
 
-<script lang="ts">
-import { defineComponent } from "vue";
-import HelloWorld from "./components/HelloWorld.vue";
+<script setup lang="ts">
+// Using Vue 3 Composition API with <script setup>
+import HomeView from "@/views/HomeView.vue";
 
-export default defineComponent({
-  name: "App",
-  components: {
-    HelloWorld,
-  },
-});
+// No need for explicit component registration with <script setup>
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+<!--
+Improvements:
+1. Used <script setup> for more concise Composition API usage.
+2. Removed unnecessary component options (components, name) as they're not needed with <script setup>.
+3. Kept the root component simple, delegating main content to HomeView.
+-->
