@@ -1,5 +1,5 @@
 <template>
-  <div class="p-4 shadow-md rounded-lg bg-white w-80">
+  <div class="p-4 shadow-md rounded-lg bg-white w-[307px] h-[420px]">
     <!-- If the monster is selected, display its details -->
     <template v-if="monster">
       <img
@@ -31,31 +31,29 @@
       </dl>
     </template>
 
-    <!-- If no monster is selected, display a placeholder -->
+    <!-- If no monster is selected, display a placeholder card -->
     <template v-else>
       <div
-        class="w-full h-40 flex items-center justify-center bg-gray-200 rounded-lg"
+        class="w-full h-full flex flex-col items-center justify-center bg-gray-200 rounded-lg"
       >
-        <p class="text-gray-500">{{ role }} Monster</p>
+        <p class="text-gray-700 text-2xl">{{ role }}</p>
+        <p class="text-center text-gray-500 mt-4">No monster selected</p>
       </div>
-      <h3 class="font-bold text-xl mt-4 text-center">{{ role }}</h3>
-      <hr class="my-2" aria-hidden="true" />
-      <p class="text-center text-gray-500">No monster selected</p>
     </template>
   </div>
 </template>
 
 <script setup lang="ts">
-import { computed, defineProps } from "vue";
 import { Monster } from "@/schemas/monsterSchema";
+import { computed, defineProps } from "vue";
 
-// Define the props
+// Define props
 const props = defineProps<{
-  monster: Monster | null; // Allow null for cases when no monster is selected
-  role: string; // Role is passed from parent (Player or Computer)
+  monster: Monster | null; // Allow null when no monster is selected
+  role: string; // Player or Computer
 }>();
 
-// Compute the monster stats to display if a monster is selected
+// Compute stats when a monster is selected
 const stats = computed(() => ({
   Attack: props.monster?.attack || 0,
   Defense: props.monster?.defense || 0,
