@@ -14,7 +14,8 @@ type MonsterState = {
   cpuMonster: Monster | null;
   battleResult: BattleResult | null;
   loading: boolean;
-  error: string | null;
+  errorFetchingMonsters: string | null; // Separate error for fetching monsters
+  errorBattle: string | null; // Separate error for battle
 };
 
 const state: MonsterState = {
@@ -23,7 +24,8 @@ const state: MonsterState = {
   cpuMonster: null,
   battleResult: null,
   loading: false,
-  error: null,
+  errorFetchingMonsters: null, // Start as null
+  errorBattle: null, // Start as null
 };
 
 const mutations = {
@@ -42,8 +44,11 @@ const mutations = {
   setLoading(state: MonsterState, isLoading: boolean) {
     state.loading = isLoading;
   },
-  setError(state: MonsterState, error: string | null) {
-    state.error = error;
+  setErrorFetchingMonsters(state: MonsterState, error: string | null) {
+    state.errorFetchingMonsters = error; // Set the error only for fetching monsters
+  },
+  setErrorBattle(state: MonsterState, error: string | null) {
+    state.errorBattle = error; // Set the error only for battle
   },
   clearBattleResult(state: MonsterState) {
     state.battleResult = null;
@@ -53,14 +58,14 @@ const mutations = {
 const actions = {
   async fetchMonsters({ commit }: { commit: Commit }) {
     commit("setLoading", true);
-    commit("setError", null);
+    commit("setErrorFetchingMonsters", null); // Clear error before fetch
     try {
       const monsters = await fetchMonsters();
       commit("setMonsters", monsters);
     } catch (error: unknown) {
       const errorMessage =
         error instanceof Error ? error.message : "Failed to fetch monsters";
-      commit("setError", errorMessage);
+      commit("setErrorFetchingMonsters", errorMessage); // Set fetch error
     } finally {
       commit("setLoading", false);
     }
@@ -97,18 +102,17 @@ const actions = {
   }) {
     if (state.playerMonster && state.cpuMonster) {
       commit("setLoading", true);
-      commit("setError", null);
+      commit("setErrorBattle", null); // Clear error before starting the battle
       try {
         const result = await startBattle(
           state.playerMonster.id,
-          state.cpuMonster.id,
-          state.monsters // Pass the full list of monsters for battle logic
+          state.cpuMonster.id
         );
         commit("setBattleResult", result);
       } catch (error: unknown) {
         const errorMessage =
           error instanceof Error ? error.message : "Battle failed";
-        commit("setError", errorMessage);
+        commit("setErrorBattle", errorMessage); // Set battle error
       } finally {
         commit("setLoading", false);
       }

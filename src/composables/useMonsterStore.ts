@@ -11,11 +11,15 @@ export function useMonsterStore() {
     cpuMonster: computed(() => store.state.monsters.cpuMonster),
     battleResult: computed(() => store.state.monsters.battleResult),
     loading: computed(() => store.state.monsters.loading),
+    errorFetchingMonsters: computed(
+      () => store.state.monsters.errorFetchingMonsters
+    ), // Fetching error
+    errorBattle: computed(() => store.state.monsters.errorBattle), // Battle error
 
     setPlayerMonster: (monster: Monster) => {
       store.commit("monsters/setPlayerMonster", monster);
     },
-    clearBattleResult: () => store.commit("monsters/clearBattleResult"), // Expose clearBattleResult
+    clearBattleResult: () => store.commit("monsters/clearBattleResult"),
     selectRandomCpuMonster: () =>
       store.dispatch("monsters/selectRandomCpuMonster"),
     startBattle: () => store.dispatch("monsters/startBattle"),

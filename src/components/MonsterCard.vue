@@ -1,5 +1,5 @@
 <template>
-  <div class="p-4 shadow-md rounded-lg bg-white w-[307px] h-[420px]">
+  <div class="p-4 shadow-md rounded-lg bg-white w-80 h-96">
     <!-- If the monster is selected, display its details -->
     <template v-if="monster">
       <img

@@ -7,7 +7,7 @@
 
 <script setup lang="ts">
 // Using Vue 3 Composition API with <script setup>
-import HomeView from "@/views/HomeView.vue";
+import HomeView from "./views/HomeView.vue";
 
 // No need for explicit component registration with <script setup>
 </script>
