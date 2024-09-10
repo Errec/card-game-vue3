@@ -1,4 +1,4 @@
-# battle-of-monsters
+# Card Game
 
 ## Project setup
 ```
@@ -20,9 +20,9 @@ npm run build
 npm run test:unit
 ```
 
-### Lints and fixes files
+### Run backend
 ```
-npm run lint
+npm run serve:data
 ```
 
 ### Customize configuration
