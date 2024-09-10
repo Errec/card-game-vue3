@@ -1,13 +1,13 @@
 import { z } from "zod";
 
-export const Monster = z.object({
+export const MonsterSchema = z.object({
   id: z.string(),
   name: z.string(),
-  attack: z.number(),
-  defense: z.number(),
-  hp: z.number(),
-  speed: z.number(),
+  attack: z.number().positive(),
+  defense: z.number().positive(),
+  hp: z.number().positive(),
+  speed: z.number().positive(),
   imageUrl: z.string().optional(),
 });
 
-export type Monster = z.infer<typeof Monster>;
+export type Monster = z.infer<typeof MonsterSchema>;

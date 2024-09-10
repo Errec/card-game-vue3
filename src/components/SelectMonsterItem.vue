@@ -5,7 +5,7 @@
     @click="$emit('click')"
   >
     <img
-      :src="monster.imageUrl || '../../assets/images/monster.png'"
+      :src="monster.imageUrl || ''"
       :alt="monster.name"
       class="w-full h-32 object-cover mb-4 rounded-md"
     />

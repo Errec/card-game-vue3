@@ -1,5 +1,5 @@
 <template>
-  <div class="p-4 shadow-md rounded-lg bg-white w-80 h-96">
+  <div class="p-4 shadow-zinc-700 shadow-xl rounded-lg bg-white w-80 h-96">
     <!-- If the monster is selected, display its details -->
     <template v-if="monster">
       <img
@@ -22,6 +22,7 @@
                   :aria-valuenow="stat"
                   aria-valuemin="0"
                   aria-valuemax="100"
+                  :aria-label="`${label}: ${stat}%`"
                   role="progressbar"
                 ></div>
               </div>
@@ -53,11 +54,12 @@ const props = defineProps<{
   role: string; // Player or Computer
 }>();
 
-// Compute stats when a monster is selected
+// Compute stats, normalizing to percentage if needed
+const maxStat = 100;
 const stats = computed(() => ({
-  Attack: props.monster?.attack || 0,
-  Defense: props.monster?.defense || 0,
-  HP: props.monster?.hp || 0,
-  Speed: props.monster?.speed || 0,
+  Attack: props.monster ? (props.monster.attack / maxStat) * 100 : 0,
+  Defense: props.monster ? (props.monster.defense / maxStat) * 100 : 0,
+  HP: props.monster ? (props.monster.hp / maxStat) * 100 : 0,
+  Speed: props.monster ? (props.monster.speed / maxStat) * 100 : 0,
 }));
 </script>

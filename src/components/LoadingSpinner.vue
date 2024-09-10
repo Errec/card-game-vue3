@@ -1,4 +1,3 @@
-<!-- src/components/LoadingSpinner.vue -->
 <template>
   <div class="fixed-center" role="status">
     <div
@@ -21,11 +20,3 @@
   z-index: 50;
 }
 </style>
-
-<!--
-Improvements:
-1. Added a custom CSS class 'fixed-center' to position the spinner in the middle of the screen.
-2. Kept the existing spinner animation and accessibility features.
-3. Removed any changes to background or overlay.
-4. Maintained the 'role="status"' for accessibility.
--->

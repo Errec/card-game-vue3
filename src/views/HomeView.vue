@@ -1,5 +1,5 @@
 <template>
-  <div class="p-8 max-w-4xl mx-auto">
+  <div class="p-8 max-w-7xl mx-auto">
     <h1 class="text-3xl font-bold mb-4">Battle of Monsters</h1>
 
     <!-- Loading State -->
@@ -21,6 +21,8 @@
         v-if="showWinner && battleResult"
         :winner="battleResult.winner"
         :tie="battleResult.tie"
+        :playerMonster="playerMonster"
+        :cpuMonster="cpuMonster"
       />
       <div class="flex justify-between mt-8 space-x-4">
         <MonsterCard :monster="playerMonster" role="Player" />

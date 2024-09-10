@@ -24,10 +24,10 @@ import { useMonsterStore } from "@/composables/useMonsterStore";
 const { playerMonster, cpuMonster, selectRandomCpuMonster, startBattle } =
   useMonsterStore();
 
-// Start battle handler
+// Start battle ha/** * @method startBattleHandlerf  * @description Handles the start battle event.
+/* @returns {Promise<void>} A promise that resolves when the battle is started.*/
 async function startBattleHandler() {
   if (!playerMonster.value) return; // Ensure a player monster is selected
-
   // Select a random CPU monster
   await selectRandomCpuMonster();
 
